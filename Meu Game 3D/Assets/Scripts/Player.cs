@@ -34,11 +34,10 @@ public class Player : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 direcao = new Vector3(x:h, y:0, z:v) * velocidade * Time.deltaTime;
-        //rb.AddForce(direcao * velocidade * Time.deltaTime, ForceMode.Impulse);
-        rb.velocity = new Vector3(direcao.x, rb.velocity.y, direcao.z);
-        if (transform.position.y < -5)
-         //if (Input.GetKeyDown(KeyCode.Space) && noChao)
+        Vector3 direcao = new Vector3(x:h, y:0, z:v);
+        rb.AddForce(direcao * velocidade * Time.deltaTime, ForceMode.Impulse);
+
+        if (Input.GetKeyDown(KeyCode.Space) && noChao)
          {
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             noChao = false;
